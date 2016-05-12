@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title> Slider</title>
+    <link rel="stylesheet" type="text/css" href="NewFile.css">
+    <script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
+</head>
+<body>
+
+<section class="demo">
+    <button class="next">Next</button>
+    <button class="prev">Previous</button>
+    <div class="container">
+        <div style="display: inline-block;">
+            <img src="http://rife.tech/wp-content/uploads/2016/03/New-York-At-Night-Wallpaper-HD-Resolution-.jpg"/>
+        </div>
+        <div>
+            <img src="http://www.pixelstalk.net/wp-content/uploads/2016/05/New-York-City-Wallpaper-HD.jpg"/>
+        </div>
+        <div>
+            <img src="http://wallpaperpixel.com/download/central-park-new-york-in-the-winter-220x176.jpg"/>
+        </div>
+        <div>
+            <img src="http://1fotonin.com/image.php?pic=/data/wallpapers/127/WDF_1695439.jpg">
+        </div>
+        <div>
+            <img src="http://cdn.pcwallart.com/images/empty-new-york-city-street-wallpaper-1.jpg"/>
+        </div>
+        <div>
+            <img src="https://i.ytimg.com/vi/hFlmkkVve94/maxresdefault.jpg"/>
+        </div>
+        <div>
+            <img src="http://www.outsidethebeltway.com/wp-content/uploads/2013/05/NYC-Skyline.jpg"/>
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+    var currentIndex = 0,
+            images = $('.container div'),
+            imagesCount = images.length;
+
+    function cycleimages() {
+        var item = $('.container div').eq(currentIndex);
+        images.hide();
+        item.css('display','inline-block');
+    }
+
+    var autoSlide = setInterval(function() {
+        currentIndex += 1;
+        if (currentIndex > imagesCount - 1) {
+            currentIndex = 0;
+        }
+        cycleimages();
+    }, 3000);
+
+    $('.next').click(function() {
+        clearInterval(autoSlide);
+        currentIndex += 1;
+        if (currentIndex > imagesCount - 1) {
+            currentIndex = 0;
+        }
+        cycleimages();
+    });
+
+    $('.prev').click(function() {
+        clearInterval(autoSlide);
+        currentIndex -= 1;
+        if (currentIndex < 0) {
+            currentIndex = imagesCount - 1;
+        }
+        cycleimages();
+    });
+</script>
+</body>
+</html>
